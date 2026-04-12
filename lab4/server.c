@@ -266,6 +266,9 @@ void *handle_connection(void* _data) {
     
 EXIT:
     if (client->authorized) {
+        #ifdef SERVER_SPECIFIC 
+        printf("[Layer 5] Session end\n");
+        #endif
         if (disconnected_gracefully) {
             broadcast(
                 message_from_fmt(
